@@ -2,8 +2,19 @@
 import styled from "styled-components"
 
 
+
+export const Container = styled.div`
+display:flex;
+flex-direction:column;
+`
+
+
+
+
+
+
 export const Header = styled.div`
-width: 95%;
+width: 98%;
 padding: 30px;
 background-color: #1F1F1F;
 color:white;

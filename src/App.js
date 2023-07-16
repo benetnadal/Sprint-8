@@ -1,26 +1,57 @@
 import  {useEffect, useState} from 'react';
 import axios from "axios";
-import {BotoNaus, DivNaus} from "./styled"
+import {BotoNaus, DivNaus, Header} from "./styled"
 import Fitxa  from './components/Fitxes';
 
 
 
 const App = () => {
 
-const [namemodel, setNamemodel] = useState([{ name: null, model: null, class: null, manufacturer: null, cost: null, crew: null, passengers: null, cargo: null, consumables: null, length: null, mas: null, hr: null, msirs: null, url: null}]);//Si no és una array et donarà error per això utilitza les claus [] 
+
+
+const [namemodel, setNamemodel] = useState([{ name: null, model: null, class: null, manufacturer: null, cost: null, crew: null, passengers: null, cargo: null, consumables: null, length: null, mas: null, hr: null, msirs: null, url: null}]);
 
 const [fitxa, setFitxa] = useState(-1)
 
-   useEffect(() => {
-    axios.get('https://swapi.dev/api/starships/?page=1') 
+
+//  const [page, setPage] = useState(1);
+
+let counter = 1;
+
+const loadNaus = () => {
+
+axios.get(`https://swapi.dev/api/starships/?page=${counter}`) 
     
-    .then(res => {    
-     
+    .then(res => {  
+      
+      const newNameModel = res.data.results.map(data => {return ({name: data.name , model: data.model, class: data.starship_class, manufacturer: data.manufacturer, cost: data.cost_in_credits, crew: data.crew, passengers: data.passengers, cargo: data.cargo_capacity, consumables: data.consumables, length: data.length, mas: data.max_atmosphering_speed, hr: data.hyperdrive_rating, msirs:data.MGLT, url: data.url.replace(/[^0-9]+/g, "")})}); console.log(newNameModel.length);    
+      
+      setNamemodel(oldNameMoldel => [...oldNameMoldel,...newNameModel])
+           
+   });   
 
-       setNamemodel(res.data.results.map(data => {return ({name: data.name , model: data.model, class: data.starship_class, manufacturer: data.manufacturer, cost: data.cost_in_credits, crew: data.crew, passengers: data.passengers, cargo: data.cargo_capacity, consumables: data.consumables, length: data.length, mas: data.max_atmosphering_speed, hr: data.hyperdrive_rating, msirs:data.MGLT, url: data.url.replace(/[^0-9]+/g, "")})}))
+   if(counter<5) counter +=1;
+        // setPage(prevPage => prevPage + 1); 
+   
+}
 
-       //El length és per atribuir-li una key al llistat, no hi ha cap length igual en les 36 naus
-  })}, []);  
+
+
+const handleScroll = (e) => { 
+ /*  console.log("top: ", e.target.documentElement.scrollTop)
+  console.log("window: ", window.innerHeight)
+  console.log("height: ", e.target.documentElement.scrollHeight) */  
+  if(window.innerHeight + e.target.documentElement.scrollTop  >= e.target.documentElement.scrollHeight) {
+  if(counter<5) {loadNaus()};
+  //console.log("hem arribat al final de la llista")
+  }    
+ 
+};
+
+   useEffect(() => {
+    loadNaus();
+      window.addEventListener("scroll", handleScroll);
+    }, []);  
 
 
   const handleclick = (e) => {
@@ -28,12 +59,11 @@ const [fitxa, setFitxa] = useState(-1)
 }
 
 
-
   return  (
   
   <DivNaus>
 
-    {/* <Header>LOGIN / SIGN UP</Header> */}
+     {/* <Header>LOGIN / SIGN UP</Header>  */}
 
 {namemodel.map( (info, index) => {return(
 
@@ -49,6 +79,7 @@ const [fitxa, setFitxa] = useState(-1)
 
 </div>
 )})}
+
 
 </DivNaus>  
   ) 
