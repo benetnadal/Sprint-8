@@ -1,7 +1,10 @@
 import  {useEffect, useState} from 'react';
 import axios from "axios";
-import {BotoNaus, DivNaus, Header} from "./styled"
+import {BotoNaus, DivNaus, Container, Header, Franja, BotoHeaderEsq, BotoHeaderDret, BotoFranja} from "./styled"
 import Fitxa  from './components/Fitxes';
+import {FaRegUser} from "react-icons/fa6";
+import { FaArrowRightToBracket } from "react-icons/fa6";
+
 
 
 
@@ -36,7 +39,6 @@ axios.get(`https://swapi.dev/api/starships/?page=${counter}`)
 }
 
 
-
 const handleScroll = (e) => { 
  /*  console.log("top: ", e.target.documentElement.scrollTop)
   console.log("window: ", window.innerHeight)
@@ -60,28 +62,44 @@ const handleScroll = (e) => {
 
 
   return  (
+
+    <Container>
+
+      
+     <Header><BotoHeaderEsq><b><FaArrowRightToBracket/>  LOGIN</b></BotoHeaderEsq><BotoHeaderDret><b><FaRegUser/>  SIGN UP</b></BotoHeaderDret></Header> 
+      
+
+
+     <Franja>
+      <BotoFranja><b>HOME</b></BotoFranja>
+      <BotoFranja><b>STARSHIPS</b></BotoFranja>
+     </Franja>
+
   
   <DivNaus>
 
-     {/* <Header>LOGIN / SIGN UP</Header>  */}
-
-{namemodel.map( (info, index) => {return(
+{namemodel.map( (info, index) => {if(index !== 0) return(
+  
 
 <div key={index}> 
+
+
 <BotoNaus  value={index}  onClick={handleclick}>  
 
-<p>{info.name}</p>
-<p>{info.model}</p>
+<p><b>{info.name}</b></p>
+<p><b>{info.model}</b></p>
 
 </BotoNaus>
 
-<Fitxa trigger={fitxa == index} name={namemodel[index].name}img={"https://starwars-visualguide.com/assets/img/starships/" + namemodel[index].url + ".jpg"} model={namemodel[index].model} class={namemodel[index].class} manufacturer={namemodel[index].manufacturer} cost={namemodel[index].cost + " CREDITS"} crew= {namemodel[index].crew} pc= {namemodel[index].passengers} cc= {namemodel[index].cargo + " TONS"} cons= {namemodel[index].consumables} length= {namemodel[index].length + " METERS"} mas= {namemodel[index].mas + " KM/H"} hr= {namemodel[index].hr} msir= {namemodel[index].msirs + " MGLT"}/>
+<Fitxa trigger={fitxa == index && index!==0} name={namemodel[index].name}img={"https://starwars-visualguide.com/assets/img/starships/" + namemodel[index].url + ".jpg"} model={namemodel[index].model} class={namemodel[index].class} manufacturer={namemodel[index].manufacturer} cost={namemodel[index].cost + " CREDITS"} crew= {namemodel[index].crew} pc= {namemodel[index].passengers} cc= {namemodel[index].cargo + " TONS"} cons= {namemodel[index].consumables} length= {namemodel[index].length + " METERS"} mas= {namemodel[index].mas + " KM/H"} hr= {namemodel[index].hr} msir= {namemodel[index].msirs + " MGLT"}/>
 
 </div>
 )})}
 
 
 </DivNaus>  
+
+</Container>
   ) 
   };
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { FitxaContainer} from "../styled"
+import { FitxaContainer, ItemContainer1,ItemContainer2, PetitContainer} from "../styled"
 
 
  
@@ -13,31 +13,39 @@ const Fitxa = (props) =>{
         <FitxaContainer >
             <>
 
-            <div><p>{props.name.toUpperCase()}</p></div>
+            <div><b><p>{props.name.toUpperCase()}</p></b></div>
 
             <div>
                 <img src={props.img} alt="" />
             </div>
  <div>
-<ul>
-    <li>MODEL: {props.model.toUpperCase()}</li>
-    <li>STARSHIP CLASS: {props.class.toUpperCase()}</li>
-    <li>MANUFACTURER: {props.manufacturer.toUpperCase()}</li>
-    <li>COST: {props.cost}</li>    
-</ul>
+    <ul>
+    <ItemContainer1>
 
-<ul>
-    <li>CREW: {props.crew}</li>
-    <li>PASSENGER CAPACITY: {props.pc}</li>
-    <li>CARGO CAPACITY: {props.cc}</li>
-    <li>CONSUMABLES: {props.cons.toUpperCase()}</li>    
+    <li><b>MODEL:</b> {props.model.toUpperCase()}</li>
+    <li><b>STARSHIP CLASS:</b> {props.class.toUpperCase()}</li>
+    <li><b>MANUFACTURER:</b> {props.manufacturer.toUpperCase()}</li>
+    <li><b>COST:</b> {props.cost}</li>    
+</ItemContainer1>
 </ul>
-
 <ul>
-    <li>LENGTH: {props.length}</li>
-    <li>MAXIMUM ATMOSPHERING SPEED: {props.mas}</li>
-    <li>HYPERDRIVE RATING: {props.hr}</li>
-    <li>MAXIMUM SPEED IN REALSPACE: {props.msir}</li>    
+
+    <PetitContainer>
+<ItemContainer2>
+
+    <li><b>CREW:</b> {props.crew}</li>
+    <li><b>PASSENGER CAPACITY:</b> {props.pc}</li>
+    <li><b>CARGO CAPACITY:</b> {props.cc}</li>
+    <li><b>CONSUMABLES:</b> {props.cons.toUpperCase()}</li>    
+</ItemContainer2>
+<ItemContainer2>
+
+    <li><b>LENGTH:</b> {props.length}</li>
+    <li><b>MAXIMUM ATMOSPHERING SPEED:</b> {props.mas}</li>
+    <li><b>HYPERDRIVE RATING:</b> {props.hr}</li>
+    <li><b>MAXIMUM SPEED IN REALSPACE:</b> {props.msir}</li>    
+</ItemContainer2>
+</PetitContainer>
 </ul>
 
 </div> 
