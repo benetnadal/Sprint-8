@@ -1,24 +1,19 @@
 
-import styled from "styled-components"
-
+import styled, { keyframes } from "styled-components"
 
 
 
 import images from "./images/stars.png"
 import images1 from "./images/galaxy3.jpeg"
-
-
-
-
-
-
+import images2 from "./images/darth.jpg"
 
 
 
 
 export const Container = styled.div`
 display:flex;
-flex-direction:column;`
+flex-direction:column;
+`
 
 
 export const Header = styled.div`
@@ -35,6 +30,7 @@ background-size: 170px 75px;
  justify-content: end;
 background-position: center;
 margin: auto;
+
 `
 export const BotoHeaderEsq = styled.button`
 width:100px;
@@ -60,16 +56,42 @@ export const BotoHeaderDret = styled(BotoHeaderEsq)`
 margin-right:65px;
 `
 
-export const Franja = styled.div`
+//----------------------------------------------------------------------
+export const Navbar = styled.div`
 width: 100%;
 display:flex; 
 border-bottom: 2px solid rgba(255,255,0,0.3);
-
 justify-content: center;
 background-color: black;
 color:white;
-
 `
+
+export const BotoNavbar = styled.button`
+width:100px;
+text-align: center;
+padding:12px 1px;
+border: 2px solid #1C1C1C;
+border-top: none;
+
+border-bottom:none; 
+
+color: ${props =>(props.actiu? "yellow":"grey")};
+
+background-color: black;
+
+ &:hover {
+    color: white;
+  }
+&:active {
+    color: white;
+    border-bottom: 1px solid white
+  }
+`
+export const BotoNavbar1 = styled(BotoNavbar)`
+color: ${props =>(props.actiu1? "yellow":"grey")};
+`
+
+//------------------------------------------------------------------
 
 export const DivNaus = styled.div`
 width: 100%;
@@ -85,8 +107,69 @@ background-image: url(${images1});
  background-repeat: no-repeat;
 background-attachment: fixed;
 margin: auto;
-
 `
+
+export const DivNausInici = styled(DivNaus)`
+position:relative`
+
+export const DivInici = styled(DivNaus)`
+width: 80%;
+
+background-image: url(${images2});
+opacity: 0.70;
+
+  position: sticky;
+
+  left: 0;
+  top: 0;
+  
+  width: 100%;
+  min-height: 78.9vh
+`
+// min-height: 100vh;
+
+
+
+ const efectes = keyframes`
+  0%{
+    opacity: 0;
+    
+    transform: perspective(200px) rotateX(13deg) translateY(170px);
+  }
+  7% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0;
+
+    transform: perspective(200px) rotateX(20deg) translateY(-500px);
+  }
+` 
+ 
+
+export const TexteInici = styled.div`
+font-family: 'Mitr', sans-serif;
+color:yellow;
+text-align: justify;
+margin: 0 auto;
+letter-spacing: 1.5px;
+max-width: 580px;
+
+heigth: 1200px;
+
+
+animation: ${efectes} 30s linear;
+transform: perspective(200px) rotatex(20deg); 
+`
+// infinite
+
+
+
+
+
 
 export const BotoNaus = styled.button`
 
@@ -98,15 +181,12 @@ margin: 10px  auto;
 border: 2px solid transparent;
 border-radius: 5px;
 color: grey;
-background-color: rgba(255,255,255,0.1);
+background-color: rgba(255,255,255,0.05);
 font-family: 'Mitr', sans-serif;
 
-
-
-
  &:hover {
     color: white;
-border: 2px solid rgba(255,255,0,0.1);
+border: 3px solid rgba(255,255,0,0.1);
 
   }
 &:active {
@@ -116,24 +196,7 @@ border: 2px solid rgba(255,255,0,0.1);
 
 `
 
-export const BotoFranja = styled.button`
-width:100px;
-text-align: center;
-padding:12px 1px;
-border: 2px solid #1C1C1C;
-border-top: none;
-border-bottom: none;
-color: #DECDCD;
-background-color: black;
 
- &:hover {
-    color: white;
-  }
-&:active {
-    color: white;
-    border-bottom: 1px solid white
-  }
-`
 
 
 export const FitxaContainer= styled.div`
