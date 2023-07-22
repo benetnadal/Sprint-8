@@ -3,7 +3,6 @@ import  {useEffect, useState} from 'react';
 import axios from "axios";
 import {BotoNaus, DivNaus, Container} from "../styled"
 import Fitxa  from '../components/Fitxes';
-
 import  BarraNav  from "../components/BarraNav";
 import HeaderNav from "../components/HeaderNav";
 
@@ -67,7 +66,7 @@ const handleScroll = (e) => {
      
 <HeaderNav/>      
 
-<BarraNav actiu1 ruta1="/" ruta2="/page2"/>
+<BarraNav actiu1={true} ruta1="/" ruta2="/page2"/>
 
    
 

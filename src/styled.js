@@ -48,7 +48,7 @@ border: 1px solid black;
     <ddddd/>
   }
 &:active {
-    color: white;
+    color: yellow;
   }
 `
 
@@ -76,6 +76,7 @@ border-top: none;
 border-bottom:none; 
 
 color: ${props =>(props.actiu? "yellow":"grey")};
+
 
 background-color: black;
 
@@ -134,7 +135,7 @@ opacity: 0.70;
   0%{
     opacity: 0;
     
-    transform: perspective(200px) rotateX(13deg) translateY(170px);
+    transform: perspective(200px) rotateX(16deg) translateY(170px);
   }
   7% {
     opacity: 1;
@@ -161,7 +162,7 @@ max-width: 580px;
 heigth: 1200px;
 
 
-animation: ${efectes} 30s linear;
+animation: ${efectes} 30s linear infinite;
 transform: perspective(200px) rotatex(20deg); 
 `
 // infinite
@@ -238,6 +239,76 @@ list-style: none;
 
 
 
+// -----------PANELL REGISTRE---------------------------
+
+
+
+export const PanellPetitPrincipal = styled.div`
+display: flex;
+background-color: black;
+justify-content: center;
+
+`
+
+export const PanellPetitSecundari = styled.div`
+Background-color:#2C2B2B;
+padding: 30px;
+position: relative;
+`
+
+export const InputSign = styled.input`
+border: 2px solid yellow;
+background-color: white;
+border: 2px solid white;
+border-radius: 2px;
+width: 350px;
+padding:8px;
+margin:5px;
+
+&:focus {
+  background-color:#413E3E;
+       color: yellow;
+       outline: 1px solid yellow;  
+       border: 1px solid yellow
+    }
+`
+
+export const BotoSign = styled.button`
+background-color: #413E3E;
+border: 2px solid #413E3E;
+border-radius: 2px;
+width: 98.6%;
+justify-content:center;
+color:white;
+padding:8px;
+margin:5px;
+font-family: 'Mitr', sans-serif;
+
+&:hover{
+  color: yellow
+}
+`
+
+export const BotoClose = styled.button`
+position:absolute;
+top: 0;
+right:0;
+background-color: transparent;
+border:1px solid transparent;
+padding: 2px;
+font-size: 25px;
+color:grey;
+&:hover{
+  color:white
+}
+`
+export const Paragraf = styled.p`
+color: white;
+font-family: 'Mitr', sans-serif;
+
+`
+
+//------------------------------------------------------
 
 
 

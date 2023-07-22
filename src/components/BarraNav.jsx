@@ -9,8 +9,8 @@ import {useNavigate} from "react-router-dom"
     return(
 <>
 <Navbar>
-      <BotoNavbar {...props} onClick={() => Navigate(process.env.PUBLIC_URL + props.ruta1)}><b>HOME</b></BotoNavbar>
-      <BotoNavbar1 {...props} onClick={() => Navigate(process.env.PUBLIC_URL + props.ruta2)}><b>STARSHIPS</b></BotoNavbar1>
+      <BotoNavbar {...props} disabled={false} onClick={() => Navigate(process.env.PUBLIC_URL + props.ruta1)}><b>HOME</b></BotoNavbar>
+      <BotoNavbar1 {...props} disabled={false} onClick={() => Navigate(process.env.PUBLIC_URL + props.ruta2)}><b>STARSHIPS</b></BotoNavbar1>
 </Navbar>
 
 
